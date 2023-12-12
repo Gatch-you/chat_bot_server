@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     # Django installed packages
     'rest_framework',
     # Django apps
-    'gpt_chat',
     'line_bot',
     
 ]
