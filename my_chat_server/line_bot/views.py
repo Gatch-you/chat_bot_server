@@ -11,14 +11,12 @@ from .chat_with_gpt.line_message import LineMessage
 
 # Create your views here.
 class ChatwitBotView(APIView):
-    # def get(self, request):
-    #     return Response("hoge", status=status.HTTP_200_OK)
-    
     def post(self, request):
         bot_response = chat_with_bot(request.data["message"])
         return Response(bot_response, status=status.HTTP_200_OK)
 
 
+# lineに関する機能
 @csrf_exempt
 def index(request):
     print("thread")
