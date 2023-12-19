@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-e68m_9vkh8x29z3er(1d_#ta5cddb-ki$^h^0zzmw)o@9w312h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -31,7 +31,9 @@ INSTALLED_APPS = [
     # Django installed packages
     'rest_framework',
     # Django apps
+    'gpt_chat',
     'line_bot',
+
     
 ]
 
