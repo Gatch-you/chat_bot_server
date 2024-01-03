@@ -33,8 +33,6 @@ INSTALLED_APPS = [
     # Django apps
     'gpt_chat',
     'line_bot',
-
-    
 ]
 
 MIDDLEWARE = [

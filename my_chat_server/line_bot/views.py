@@ -30,3 +30,11 @@ def index(request):
         line_message = LineMessage(create_single_text_message(user_id, message['text']))
         line_message.reply(reply_token)
         return HttpResponse("ok")
+
+class ConnectTestResponseView(APIView):
+    def get(self, request):
+        try:
+            return Response("Hello, Django Server", status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(f"something error is happend: {e}", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    

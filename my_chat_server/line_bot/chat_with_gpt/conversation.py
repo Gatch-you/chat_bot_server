@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from rest_framework import status
 from rest_framework.views import Response
 from urllib.error import HTTPError, URLError
-import MySQLdb
 from line_bot.models import User
 from gpt_chat.models import Thread
 from django.db import IntegrityError
