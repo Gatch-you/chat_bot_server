@@ -19,17 +19,24 @@ class ChatwitBotView(APIView):
 # lineに関する機能
 @csrf_exempt
 def index(request):
-    print("thread")
-    if request.method == 'POST':
-        request = json.loads(request.body.decode('utf-8'))
-        print(request)
-        data = request['events'][0]
-        message = request['events'][0]['message']
-        user_id = request['events'][0]['source']['userId']
-        reply_token = data['replyToken']
-        line_message = LineMessage(create_single_text_message(user_id, message['text']))
-        line_message.reply(reply_token)
-        return HttpResponse("ok")
+    try:
+        if request.method == 'POST':
+            request = json.loads(request.body.decode('utf-8'))
+            print(request)
+            data = request['events'][0]
+            message = request['events'][0]['message']
+            line_user_id = request['events'][0]['source']['userId']
+            reply_token = data['replyToken']
+            line_message = LineMessage(create_single_text_message(line_user_id, message['text']))
+            line_message.reply(reply_token)
+            return HttpResponse("ok")
+    except ValueError as e:
+        return Response({
+            "message": "value error in Messaging API",
+            "status": e
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
 
 class ConnectTestResponseView(APIView):
     def get(self, request):
